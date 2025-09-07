@@ -1,35 +1,30 @@
 package kodlamaio.nothwind.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "categories")
 public class Category {
 	
 	@Id
-	@GeneratedValue
 	@Column(name = "category_id")
-	public int categoryId;
+	private int categoryId;
 	
 	@Column(name = "category_name")
-	public String categoryName;
-
-	public Category() {
-		
-	}
+	private String categoryName;
 	
-	public Category(int categoryId, String categoryName) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
-	}
-
-
-	
+	@OneToMany
+	private List<Product> products;
 }

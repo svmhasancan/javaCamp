@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.nothwind.business.abstracts.CategoryService;
+import kodlamaio.nothwind.core.utilities.results.DataResult;
+import kodlamaio.nothwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.nothwind.dataAccess.abstracts.CategoryDao;
 import kodlamaio.nothwind.entities.concretes.Category;
 
@@ -19,7 +21,7 @@ public class CategoryManager implements CategoryService{
 		this.categoryDao = categoryDao;
 	}
 	
-	public List<Category> getAll(){
-		return categoryDao.findAll();
+	public DataResult<List<Category>> getAll(){
+		return new SuccessDataResult<List<Category>>(categoryDao.findAll());
 	}
 }

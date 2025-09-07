@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.nothwind.business.abstracts.CategoryService;
+import kodlamaio.nothwind.core.utilities.results.DataResult;
 import kodlamaio.nothwind.entities.concretes.Category;
 
 @RestController
@@ -22,7 +23,7 @@ public class CategoriesController {
 	}
 	
 	@GetMapping("/getall")
-	public List<Category> getAll(){
+	public DataResult<List<Category>> getAll(){
 		return categoryService.getAll();
 	}
 }
