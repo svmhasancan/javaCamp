@@ -2,6 +2,8 @@ package kodlamaio.nothwind.entities.concretes;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -25,6 +27,7 @@ public class Category {
 	@Column(name = "category_name")
 	private String categoryName;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "category")
+	@JsonIgnore()
 	private List<Product> products;
 }
