@@ -2,7 +2,7 @@ package kodlamaio.nothwind.entities.concretes;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "categories")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Category {
 	
 	@Id
@@ -28,6 +29,5 @@ public class Category {
 	private String categoryName;
 	
 	@OneToMany(mappedBy = "category")
-	@JsonIgnore()
 	private List<Product> products;
 }
